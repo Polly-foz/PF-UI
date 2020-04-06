@@ -1,5 +1,5 @@
 <template>
-    <button class="pf-button">按钮</button>
+    <button class="pf-button"><slot></slot></button>
 </template>
 
 <script>
