@@ -12,6 +12,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         :root {
             --button-height: 32px;
             --font-size: 14px;
@@ -22,9 +23,11 @@
             --border-color: #999;
             --border-color-hover: #666;
         }
+
         #app {
             margin: 20px;
         }
+
         body {
             font-size: var(--font-size);
         }
@@ -33,8 +36,17 @@
 </head>
 <body>
 <div id="app">
-    <pf-button>按钮</pf-button>
+    <pf-button>
+        按钮
+    </pf-button>
+    <pf-button icon="left">
+        上一页
+    </pf-button>
+    <pf-button icon="right" icon-position="right">
+        下一页
+    </pf-button>
 </div>
 <script src="src/app.js"></script>
+<script src="//at.alicdn.com/t/font_1682965_2yslp2q73p.js"></script>
 </body>
 </html>
