@@ -1,13 +1,19 @@
 <template>
-    <div></div>
+    <svg class="icon">
+        <use :xlink:href="`#i-${name}`"></use>
+    </svg>
 </template>
 
 <script>
     export default {
-        name: "icon"
+        name: "icon",
+        props: ['name']
     };
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    .icon {
+        width: 1em;
+        height: 1em;
+    }
 </style>

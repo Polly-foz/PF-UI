@@ -1,8 +1,6 @@
 <template>
     <button class="pf-button" :class="{[`icon-${iconPosition}`]:true}">
-        <svg v-if="icon" class="icon">
-            <use :xlink:href=`#i-${icon}`></use>
-        </svg>
+        <pf-icon v-if="icon" :name="icon" class="icon"></pf-icon>
         <div class="content"><slot></slot></div>
     </button>
 </template>
@@ -48,7 +46,7 @@
             outline: none;
         }
 
-        > .icon{order:1; margin-reight:.3em;}
+        > .icon{order:1; margin-right:.3em;}
         > .content{order:2;}
 
         &.icon-right {
@@ -57,8 +55,5 @@
         }
     }
 
-    .icon {
-        width: 1em;
-        height: 1em;
-    }
+
 </style>
