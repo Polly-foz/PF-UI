@@ -1,6 +1,7 @@
 <template>
-    <button class="pf-button" :class="{[`icon-${iconPosition}`]:true}">
-        <pf-icon v-if="icon" :name="icon" class="icon"></pf-icon>
+    <button class="pf-button" :class="{[`icon-${iconPosition}`]:true}" @click="$emit('click')">
+        <pf-icon v-if="loading" name="loading" class="icon loading"></pf-icon>
+        <pf-icon v-if="icon&&!loading" :name="icon" class="icon"></pf-icon>
         <div class="content"><slot></slot></div>
     </button>
 </template>
@@ -16,12 +17,20 @@
                 validator(value){
                     return value==='left'||value==='right'
                 }
+            },
+            loading:{
+                type: Boolean,
+                default: false
             }
         }
     };
 </script>
 
 <style lang="scss" scoped>
+    @keyframes spin{
+        0%{transform:rotate(0deg);}
+        100%{transform:rotate(360deg);}
+    }
     .pf-button {
         font-size: var(--font-size);
         height: var(--button-height);
@@ -52,6 +61,10 @@
         &.icon-right {
             > .content {order:1;}
             > .icon {order:2; margin-right:0; margin-left:.3em;}
+        }
+
+        .loading{
+            animation: spin 2s infinite linear;
         }
     }
 

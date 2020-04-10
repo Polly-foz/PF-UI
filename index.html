@@ -36,13 +36,13 @@
 </head>
 <body>
 <div id="app">
-    <pf-button>
+    <pf-button :loading="loading1" @click="loading1=!loading1">
         按钮
     </pf-button>
-    <pf-button icon="left">
+    <pf-button icon="left" :loading="loading2" @click="loading2=!loading2">
         上一页
     </pf-button>
-    <pf-button icon="right" icon-position="right">
+    <pf-button icon="right" icon-position="right" :loading="loading3" @click="loading3=!loading3">
         下一页
     </pf-button>
 
