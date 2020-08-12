@@ -1,4 +1,4 @@
-# 啪嗒 - 一个Vue UI组件
+# 泡发UI - 一个Vue UI组件
 
 作者：Polly-foz
 
