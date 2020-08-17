@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: "button-group",
+        name: "PFButtonGroup",
         mounted() {
             for(let node of this.$el.children){
                 if(node.nodeName !== 'BUTTON'){

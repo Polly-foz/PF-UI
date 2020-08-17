@@ -11,7 +11,7 @@
 <script>
     import Icon from './icon'
     export default {
-        name: "input",
+        name: "PFInput",
         components:{
             Icon
         },

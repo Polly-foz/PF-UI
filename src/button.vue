@@ -12,7 +12,7 @@
     export default {
         // props:['icon','iconPosition']
         components:{
-            "pf-icon":Icon
+            "PFIcon":Icon
         },
         props: {
             icon: {},
