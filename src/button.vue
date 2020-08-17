@@ -7,8 +7,13 @@
 </template>
 
 <script>
+    import Icon from "./icon";
+
     export default {
         // props:['icon','iconPosition']
+        components:{
+            "pf-icon":Icon
+        },
         props: {
             icon: {},
             iconPosition: {
