@@ -9,13 +9,21 @@ Vue.config.devtools = false;
 
 
 describe('Input', () => {
+
+
     it('存在.', () => {
         expect(Input).to.be.ok;
     });
     describe('props',()=>{
+        const Constructor = Vue.extend(Input);
+        let vm;
+        afterEach(function () {
+            // runs after each test in this block
+            vm.$destroy();
+        });
+
         it('接收 value', () => {
-            const Constructor = Vue.extend(Input);
-            const vm = new Constructor({
+            vm = new Constructor({
                 propsData: {
                     value: 'hello'
                 }
@@ -24,10 +32,8 @@ describe('Input', () => {
             // console.log(inputElement.outerHTML);
             // console.log(inputElement);
             expect(inputElement.value).to.equal('hello');
-            vm.$destroy();
         });
         it('接收 disabled', () => {
-            const Constructor = Vue.extend(Input);
             const vm = new Constructor({
                 propsData: {
                     disabled: true
@@ -36,11 +42,9 @@ describe('Input', () => {
             const inputElement = vm.$el.querySelector('input');
             // console.log(inputElement.outerHTML);
             expect(inputElement.disabled).to.equal(true);
-            vm.$destroy();
         });
         it('接收 readonly', () => {
-            const Constructor = Vue.extend(Input);
-            const vm = new Constructor({
+            vm = new Constructor({
                 propsData: {
                     readonly: true
                 }
@@ -48,11 +52,9 @@ describe('Input', () => {
             const inputElement = vm.$el.querySelector('input');
             console.log(inputElement.outerHTML);
             expect(inputElement.readOnly).to.equal(true);
-            vm.$destroy();
         });
         it('接收 error', () => {
-            const Constructor = Vue.extend(Input);
-            const vm = new Constructor({
+            vm = new Constructor({
                 propsData: {
                     error: 'input错了'
                 }
@@ -61,10 +63,10 @@ describe('Input', () => {
             expect(useElement.getAttribute('xlink:href')).to.equal('#i-error');
             const errorMessage = vm.$el.querySelector('.errorMessage');
             expect(errorMessage.innerText).to.equal('input错了')
-            vm.$destroy();
         });
     })
     describe('事件',()=>{
-
+        const Constructor = Vue.extend(Input);
+        let vm;
     })
 });

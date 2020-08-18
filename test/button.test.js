@@ -1,3 +1,4 @@
+/*
 const expect = chai.expect;
 import Vue from 'vue';
 import Button from '../src/button';
@@ -83,3 +84,4 @@ describe('Button', () => {
         expect(NaN).to.be.NaN
     })
 });
+*/
