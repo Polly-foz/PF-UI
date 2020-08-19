@@ -11,6 +11,7 @@
 
     export default {
         // props:['icon','iconPosition']
+        name:'PFButton',
         components:{
             "PFIcon":Icon
         },
