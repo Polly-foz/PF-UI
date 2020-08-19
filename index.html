@@ -42,7 +42,8 @@
 <body>
 <div id="app">
     <div class="box">
-        <pf-input value=""></pf-input>
+        <pf-input v-model="value"></pf-input>
+        <p>{{value}}</p>
         <pf-input value="" error="长度应>4"></pf-input><br>
         <pf-input value="1111" disabled value="disabled"></pf-input><br>
         <pf-input value="bbbb" readonly value="只读readonly"></pf-input><br>

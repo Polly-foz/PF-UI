@@ -72,9 +72,14 @@ describe('Input', () => {
                 vm.$on(eventName,callback)
                 //触发input的change事件
                 const event = new Event(eventName)
+                Object.defineProperty(
+                    event, 'target', {
+                        value: {value: 'hi'}, enumerable: true
+                    }
+                )
                 let inputElemnt = vm.$el.querySelector('input')
                 inputElemnt.dispatchEvent(event)
-                expect(callback).to.have.been.called.calledWith(event)
+                expect(callback).to.have.been.called.calledWith(event.target.value)
                 vm.$destroy();
             })
         })

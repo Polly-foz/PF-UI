@@ -14,7 +14,8 @@ new Vue({
         loading2: false,
         loading3: false,
         loading4: false,
-        loading5: false
+        loading5: false,
+        value:'default value'
     },
 
 });
