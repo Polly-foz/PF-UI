@@ -1,5 +1,3 @@
-import Button from "../src/button";
-
 const expect = chai.expect;
 import Vue from 'vue';
 import Input from '../src/input'
@@ -50,7 +48,7 @@ describe('Input', () => {
                 }
             }).$mount();
             const inputElement = vm.$el.querySelector('input');
-            console.log(inputElement.outerHTML);
+            // console.log(inputElement.outerHTML);
             expect(inputElement.readOnly).to.equal(true);
         });
         it('接收 error', () => {
@@ -66,7 +64,19 @@ describe('Input', () => {
         });
     })
     describe('事件',()=>{
-        const Constructor = Vue.extend(Input);
-        let vm;
+        it('支持change/input/focus/blur事件',()=>{
+            const Constructor = Vue.extend(Input);
+            ['change','input','focus','blur'].forEach((eventName)=>{
+                const vm = new Constructor({}).$mount()
+                const callback = sinon.fake();
+                vm.$on(eventName,callback)
+                //触发input的change事件
+                const event = new Event(eventName)
+                let inputElemnt = vm.$el.querySelector('input')
+                inputElemnt.dispatchEvent(event)
+                expect(callback).to.have.been.called.calledWith(event)
+                vm.$destroy();
+            })
+        })
     })
 });
