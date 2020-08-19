@@ -13,7 +13,7 @@
         // props:['icon','iconPosition']
         name:'PFButton',
         components:{
-            "PFIcon":Icon
+            "pf-icon":Icon
         },
         props: {
             icon: {},
