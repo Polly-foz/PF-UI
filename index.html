@@ -42,6 +42,27 @@
 <body>
 <div id="app">
     <div class="box">
+        <pf-row>
+            <pf-col>1</pf-col>
+            <pf-col>2</pf-col>
+        </pf-row>
+        <pf-row>
+            <pf-col>1</pf-col>
+            <pf-col>2</pf-col>
+            <pf-col>3</pf-col>
+        </pf-row>
+        <pf-row>
+            <pf-col span="8"></pf-col>
+            <pf-col span=16></pf-col>
+        </pf-row>
+        <pf-row>
+            <pf-col span="4"></pf-col>
+            <pf-col span=10></pf-col>
+            <pf-col span=10></pf-col>
+        </pf-row>
+    </div>
+
+    <div class="box">
         <pf-input v-model="value"></pf-input>
         <p>{{value}}</p>
         <pf-input value="" error="长度应>4"></pf-input><br>
