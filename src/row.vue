@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :style="rowStyle">
+    <div class="row" :style="rowStyle" :class="rowClass">
         <slot></slot>
     </div>
 </template>
@@ -8,15 +8,24 @@
     export default {
         name: "PFRow",
         props:{
-            gutter:[String,Number]
+            gutter:[String,Number],
+            align:{
+                type:String,
+                validator(value){
+                    return ['left','right','center'].includes(value)
+                }
+            }
         },
         computed:{
-          rowStyle(){
-              return {
+            rowStyle(){
+                return {
                   marginLeft:'-'+this.gutter/2+'px',
                   marginRight:'-'+this.gutter/2+'px'
-              }
-          }
+                }
+            },
+            rowClass(){
+                return [this.align&&`align-${this.align}`]
+            }
         },
 
         mounted(){
@@ -30,5 +39,14 @@
 <style lang="scss" scoped>
     .row{
         display:flex;
+        &.align-left{
+            justify-content: flex-start;
+        }
+        &.align-right{
+            justify-content: flex-end;
+        }
+        &.align-center{
+            justify-content: center;
+        }
     }
 </style>

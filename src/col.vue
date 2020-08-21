@@ -20,7 +20,7 @@
             }
         },
         computed:{
-            colClass(){return [this.span&&`col-${this.span}`,this.offset&&`offset-${this.offset}`]},
+            colClass(){return [this.span&&`span-${this.span}`,this.offset&&`offset-${this.offset}`]},
             colStyle(){return {paddingLeft:this.gutter/2+'px',paddingRight:this.gutter/2+'px'}}
         }
     };
@@ -29,10 +29,10 @@
 <style lang="scss" scoped>
     .col{
         height: 100px;
-        width: 50%;
+        /*width: 50%;*/
     }
 
-    $class-prefix: col-;
+    $class-prefix: span-;
     @for $n from 1 through 24 {
         .#{$class-prefix}#{$n} {
             width: ($n/24)*100%;
