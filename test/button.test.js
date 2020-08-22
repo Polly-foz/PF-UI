@@ -1,4 +1,3 @@
-/*
 const expect = chai.expect;
 import Vue from 'vue';
 import Button from '../src/button';
@@ -80,8 +79,5 @@ describe('Button', () => {
         expect(callback).to.have.been.called;
 
     });
-    it('随便测一下',()=>{
-        expect(NaN).to.be.NaN
-    })
+
 });
-*/
