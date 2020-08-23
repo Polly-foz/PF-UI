@@ -1,12 +1,26 @@
 <template>
-    <div class="layout">
+    <div class="layout" :class="layoutClass">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: "PFLayout"
+        name: "PFLayout",
+        data(){
+          return {
+              layoutClass:{
+                  hasSider:false
+              }
+          }
+        },
+        mounted() {
+            this.$children.forEach((vm) => {
+                if (vm.$options.name === 'PFSider') {
+                    this.layoutClass.hasSider = true
+                }
+            })
+        }
     };
 </script>
 
@@ -14,6 +28,10 @@
     .layout{
         display: flex;
         flex-direction: column;
+        flex:auto;
         width: 100%;
+        &.hasSider{
+            flex-direction: row;
+        }
     }
 </style>
