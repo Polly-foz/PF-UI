@@ -30,6 +30,7 @@
         flex-direction: column;
         flex:auto;
         width: 100%;
+        overflow: hidden;
         &.hasSider{
             flex-direction: row;
         }
