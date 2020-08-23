@@ -5,12 +5,23 @@ import ButtonGroup from './button-group';
 import Input from './input'
 import Row from './row'
 import Col from './col'
+import Layout from './layout'
+import Header from './header'
+import Sider from './sider'
+import Content from './content'
+import Footer from './footer'
 Vue.component('pf-button', Button);
 Vue.component('pf-icon', Icon);
 Vue.component('pf-button-group', ButtonGroup);
 Vue.component('pf-input',Input)
 Vue.component('pf-row',Row)
 Vue.component('pf-col',Col)
+Vue.component('pf-layout',Layout)
+Vue.component('pf-header',Header)
+Vue.component('pf-sider',Sider)
+Vue.component('pf-content',Content)
+Vue.component('pf-footer',Footer)
+
 new Vue({
     el: '#app',
     data: {
