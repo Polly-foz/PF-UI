@@ -1,7 +1,7 @@
 <template>
-    <div class="toast">
+    <div class="toast" ref="toast">
         <slot></slot>
-        <div v-if="closeButton" class="line"></div>
+        <div v-if="closeButton" class="line" ref="line"></div>
         <div v-if="closeButton" class="close" @click="onCloseClicked">{{closeButton.text}}</div>
     </div>
 </template>
@@ -45,6 +45,9 @@
                     this.close()
                 },this.autoCloseDelay*1000)
             }
+            this.$nextTick(function(){
+                this.$refs.line.style.height = this.$refs.toast.getBoundingClientRect().height + 'px'
+            })
         }
     };
 </script>
@@ -72,7 +75,6 @@
     .line{
         border-left: 1px solid white;
         margin-left: 16px;
-        height: 20px;
     }
     .close{
         padding-left: 16px;
