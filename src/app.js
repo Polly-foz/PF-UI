@@ -40,7 +40,7 @@ new Vue({
     },
     methods:{
         showToast(){
-            this.$toast('this is a toast!',{
+            this.$toast('this is a <strong>toast</strong>!<br/><br/>...',{
                 autoClose:false,
                 autoCloseDelay:3,
                 closeButton:{
@@ -48,7 +48,8 @@ new Vue({
                     callback(toast){
                         console.log('关啦！',toast)
                     }
-                }
+                },
+                enableHtml: true
             })
         }
     }
