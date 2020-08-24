@@ -40,7 +40,10 @@ new Vue({
     },
     methods:{
         showToast(){
-            this.$toast('this is a toast!')
+            this.$toast('this is a toast!',{
+                autoClose:false,
+                autoCloseDelay:3,
+            })
         }
     }
 });

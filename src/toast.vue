@@ -6,7 +6,26 @@
 
 <script>
     export default {
-        name: "PFToast"
+        name: "PFToast",
+        props:{
+            autoClose:{
+                type: Boolean,
+                default: true
+            },
+            autoCloseDelay:{
+                type: Number,
+                default: 1
+            }
+        },
+        methods:{},
+        mounted(){
+            if(this.autoClose){
+                setTimeout(()=>{
+                    this.$el.remove()
+                    this.$destroy()
+                },this.autoCloseDelay*1000)
+            }
+        }
     };
 </script>
 
