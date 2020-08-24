@@ -43,6 +43,12 @@ new Vue({
             this.$toast('this is a toast!',{
                 autoClose:false,
                 autoCloseDelay:3,
+                closeButton:{
+                    text: '关闭',
+                    callback(toast){
+                        console.log('关啦！',toast)
+                    }
+                }
             })
         }
     }
