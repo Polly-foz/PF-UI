@@ -48,6 +48,9 @@
                 this.close();
             },
             updateStyle() {
+                if(!this.$refs.line){
+                    return
+                }
                 this.$nextTick(function () {
                     this.$refs.line.style.height = this.$refs.toast.getBoundingClientRect().height + 'px';
                 });
