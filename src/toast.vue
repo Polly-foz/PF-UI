@@ -50,6 +50,7 @@
         methods: {
             close() {
                 this.$el.remove();
+                // this.$emit()
                 this.$destroy();
             },
             onCloseClicked() {
