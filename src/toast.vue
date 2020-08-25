@@ -103,6 +103,8 @@
         &.position-top{
             top: 0;
             transform: translateX(-50%);
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
         &.position-middle{
             top: 50%;
@@ -111,6 +113,8 @@
         &.position-bottom{
             bottom:0;
             transform: translateX(-50%);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
     }
 
