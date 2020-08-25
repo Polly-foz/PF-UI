@@ -41,7 +41,7 @@ new Vue({
     methods:{
         showToast(position){
             this.$toast('this is a <strong>toast</strong>!<br/><br/>...',{
-                autoClose:true,
+                autoClose:false,
                 autoCloseDelay:1,
                 closeButton:{
                     text: '关闭',
