@@ -39,9 +39,9 @@ new Vue({
         value:'default value'
     },
     methods:{
-        showToast(){
+        showToast(position){
             this.$toast('this is a <strong>toast</strong>!<br/><br/>...',{
-                autoClose:false,
+                autoClose:true,
                 autoCloseDelay:3,
                 closeButton:{
                     text: '关闭',
@@ -49,7 +49,8 @@ new Vue({
                         console.log('关啦！',toast)
                     }
                 },
-                enableHtml: true
+                enableHtml: true,
+                position
             })
         }
     }
