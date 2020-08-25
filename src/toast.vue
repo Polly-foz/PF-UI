@@ -41,7 +41,10 @@
                 this.$destroy();
             },
             onCloseClicked() {
-                this.closeButton.callback(this);
+                const callback = this.closeButton.callback
+                if(callback && typeof callback==="function"){
+                    this.closeButton.callback(this);
+                }
                 this.close();
             },
             updateStyle() {
