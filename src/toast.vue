@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper" :class="toastClass">
-        <div class="toast" :class="toastClass" ref="toast" >
+        <div class="toast" ref="toast" >
             <div v-if="enableHtml" v-html="$slots.default[0]">
             </div>
             <slot v-else></slot>
@@ -16,7 +16,7 @@
         props: {
             autoClose: {
                 type: [Boolean,Number],
-                default: 2,
+                default: 5,
                 validator(value){
                     return value === false || typeof value === 'number'
                 }
