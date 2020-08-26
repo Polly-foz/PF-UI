@@ -64,10 +64,11 @@
             updateStyle() {
                 if(!this.$refs.line){
                     return
+                }else{
+                    this.$nextTick(function () {
+                        this.$refs.line.style.height = this.$refs.toast.getBoundingClientRect().height + 'px';
+                    });
                 }
-                this.$nextTick(function () {
-                    this.$refs.line.style.height = this.$refs.toast.getBoundingClientRect().height + 'px';
-                });
             },
             executeAutoClose() {
                 if (this.autoClose) {
