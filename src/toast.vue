@@ -52,7 +52,7 @@
         methods: {
             close() {
                 this.$el.remove();
-                // this.$emit()
+                this.$emit('close')
                 this.$destroy();
             },
             onCloseClicked() {
