@@ -65,7 +65,27 @@
 <body>
 <div id="app">
     <div class="box">
-<!--        <pf-toast>a toast</pf-toast>-->
+        <pf-tabs :selected.sync="selectedTab">
+            <pf-tabs-head>
+                <template slot="action">
+                    <button>设置</button>
+                </template>
+                <pf-tabs-item name="news">时事</pf-tabs-item>
+                <pf-tabs-item name="games" disabled>游戏</pf-tabs-item>
+                <pf-tabs-item name="pets">
+                    <pf-icon name="settings"></pf-icon>
+                    萌宠
+                </pf-tabs-item>
+            </pf-tabs-head>
+            <pf-tabs-body>
+                <pf-tabs-pane name="pets">萌宠咨讯</pf-tabs-pane>
+                <pf-tabs-pane name="games">游戏咨讯</pf-tabs-pane>
+                <pf-tabs-pane name="news">时事咨讯</pf-tabs-pane>
+
+            </pf-tabs-body>
+        </pf-tabs>
+    </div>
+    <div class="box">
         <button @click="showToast('top')">top</button>
         <button @click="showToast('middle')">middle</button>
         <button @click="showToast('bottom')">bottom</button>

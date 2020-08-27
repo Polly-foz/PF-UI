@@ -12,6 +12,11 @@ import Content from './content'
 import Footer from './footer'
 import plugin from './plugin'
 import Toast from './toast'
+import Tabs from './tabs'
+import TabsHead from './tabs-head'
+import TabsItem from './tabs-item'
+import TabsBody from './tabs-body'
+import TabsPane from './tabs-pane'
 
 Vue.component('pf-button', Button);
 Vue.component('pf-icon', Icon);
@@ -25,6 +30,11 @@ Vue.component('pf-sider',Sider)
 Vue.component('pf-content',Content)
 Vue.component('pf-footer',Footer)
 Vue.component('pf-toast',Toast)
+Vue.component('pf-tabs',Tabs)
+Vue.component('pf-tabs-head',TabsHead)
+Vue.component('pf-tabs-item',TabsItem)
+Vue.component('pf-tabs-body',TabsBody)
+Vue.component('pf-tabs-pane',TabsPane)
 
 Vue.use(plugin)
 
@@ -36,7 +46,8 @@ new Vue({
         loading3: false,
         loading4: false,
         loading5: false,
-        value:'default value'
+        value:'default value',
+        selectedTab:'pets'
     },
     methods:{
         showToast(position){
