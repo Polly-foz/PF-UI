@@ -32,5 +32,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .tabs-pane{
+        padding: 1em 0;
+    }
 </style>

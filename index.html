@@ -25,7 +25,7 @@
         }
 
         #app {
-            margin: 20px;
+            margin: 0px;
         }
 
         body {
@@ -34,6 +34,7 @@
 
         .box{
             margin: 2em 0;
+            padding: 0 1em;
             /*border: 1px solid black;*/
         }
         .layout{
@@ -67,7 +68,7 @@
     <div class="box">
         <pf-tabs :selected.sync="selectedTab">
             <pf-tabs-head>
-                <template slot="action">
+                <template slot="actions">
                     <button>设置</button>
                 </template>
                 <pf-tabs-item name="news">时事</pf-tabs-item>
