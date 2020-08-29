@@ -65,6 +65,14 @@
 </head>
 <body>
 <div id="app">
+    <div class="box" style="margin-top:80px;">
+        <pf-popover>
+            <template slot="content">
+                inside popover
+            </template>
+            <button>popover trigger</button>
+        </pf-popover>
+    </div>
     <div class="box">
         <pf-tabs :selected.sync="selectedTab">
             <pf-tabs-head>
