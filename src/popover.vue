@@ -1,6 +1,6 @@
 <template>
-    <div class="popover" @click.stop="onClick" ref="popover">
-        <div class="contentWrapper" v-if="visible" @click.stop ref="contentWrapper">
+    <div class="popover" @click="onClick" ref="popover">
+        <div class="contentWrapper" v-if="visible" ref="contentWrapper">
             <slot name="content"></slot>
         </div>
         <slot></slot>
@@ -18,7 +18,11 @@
             };
         },
         methods: {
-            onDocumentClick(){
+            onDocumentClick(e){
+                if(this.$refs.popover.contains(e.target)
+                    ||this.$refs.contentWrapper.contains(e.target)){
+                    return
+                }
                 this.visible = false;
                 document.removeEventListener('click', this.onDocumentClick);
             },
@@ -36,7 +40,7 @@
                 this.visible = false
                 document.removeEventListener('click', this.onDocumentClick);
             },
-            onClick() {
+            onClick(e) {
                 if(this.visible){
                     this.close()
                 }else{
