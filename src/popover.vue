@@ -1,6 +1,6 @@
 <template>
-    <div class="popover" @click.stop="onClick">
-        <div class="contentWrapper" v-if="visible" @click.stop>
+    <div class="popover" @click.stop="onClick" ref="popover">
+        <div class="contentWrapper" v-if="visible" @click.stop ref="contentWrapper">
             <slot name="content"></slot>
         </div>
         <slot></slot>
@@ -8,6 +8,8 @@
 </template>
 
 <script>
+    import content from "./content";
+
     export default {
         name: "PFPopover",
         data() {
@@ -23,6 +25,10 @@
             open(){
                 this.visible = true;
                 this.$nextTick(()=>{
+                    const {top,left} = this.$refs.popover.getBoundingClientRect()
+                    document.body.appendChild(this.$refs.contentWrapper)
+                    this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+                    this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
                     document.addEventListener('click', this.onDocumentClick);
                 })
             },
@@ -44,12 +50,10 @@
 <style lang="scss" scoped>
     .popover {
         display: inline-block;
-        position: relative;
-        .contentWrapper {
-            position: absolute;
-            bottom: 100%;
-            box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
-        }
-
+    }
+    .contentWrapper {
+        position: absolute;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+        transform: translateY(-100%);
     }
 </style>
