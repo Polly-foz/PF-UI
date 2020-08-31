@@ -8,7 +8,6 @@
 </template>
 
 <script>
-    import content from "./content";
 
     export default {
         name: "PFPopover",
@@ -52,12 +51,38 @@
 </script>
 
 <style lang="scss" scoped>
+    $border-color: #333;
+    $border-radius: 4px;
     .popover {
         display: inline-block;
     }
     .contentWrapper {
         position: absolute;
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+        border:1px solid $border-color;
+        border-radius: $border-radius;
+        filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
         transform: translateY(-100%);
+        background: white;
+        padding: 0.5em 1em;
+        max-width: 20em;
+        word-break: break-all;
+        margin-top: -10px;
+        &::before,&::after{
+            content:'';
+            display: block;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            position: absolute;
+            left: 10px;
+        }
+        &::before{
+            border-top:10px solid $border-color;
+            top: 100%;
+        }
+        &::after{
+            border-top:10px solid white;
+            top: calc(100% - 1px);
+        }
     }
 </style>
