@@ -1,6 +1,6 @@
 <template>
-    <div class="popover" @click.stop="onClickTrigger">
-        <div class="content" v-if="visible" @click.stop>
+    <div class="popover" @click.stop="onClick">
+        <div class="contentWrapper" v-if="visible" @click.stop>
             <slot name="content"></slot>
         </div>
         <slot></slot>
@@ -16,25 +16,26 @@
             };
         },
         methods: {
-            onClickTrigger() {
-                // console.log('click');
-                this.visible = !this.visible;
-                const documentClickEventListener = () => {
-                    this.visible = false;
-                    // console.log('document隐藏popover');
-                    document.removeEventListener('click', documentClickEventListener);
-                    // console.log('doc删除监听器');
-                };
-                if (this.visible) {
-                    document.addEventListener('click', documentClickEventListener);
-                    // console.log('添加监听器');
-                } else {
-                    //TODO: 不影响使用，但下面这行代码没有起作用。。。
-                    document.removeEventListener('click', documentClickEventListener);
-                    // console.log('vm删除监听器');
-                    // console.log('vm隐藏popover');
+            onDocumentClick(){
+                this.visible = false;
+                document.removeEventListener('click', this.onDocumentClick);
+            },
+            open(){
+                this.visible = true;
+                this.$nextTick(()=>{
+                    document.addEventListener('click', this.onDocumentClick);
+                })
+            },
+            close(){
+                this.visible = false
+                document.removeEventListener('click', this.onDocumentClick);
+            },
+            onClick() {
+                if(this.visible){
+                    this.close()
+                }else{
+                    this.open()
                 }
-
             }
         }
     };
@@ -44,7 +45,7 @@
     .popover {
         display: inline-block;
         position: relative;
-        .content {
+        .contentWrapper {
             position: absolute;
             bottom: 100%;
             box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
