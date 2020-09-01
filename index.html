@@ -67,10 +67,11 @@
 <div id="app">
     <div class="box" style="margin-top:80px;border:1px solid red;overflow:hidden;padding-top:10px;">
         <pf-popover position="top">
-            <template slot="content">
+            <template v-slot:content="xxx">
                 inside popover inside popoverinside popoverinside popoverinside
+                <pf-button @click="xxx.close">关闭</pf-button>
             </template>
-            <button>点击</button>
+            <pf-button>点击</pf-button>
         </pf-popover>
         <pf-popover position="left">
             <template slot="content">
