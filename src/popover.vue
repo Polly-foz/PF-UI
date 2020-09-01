@@ -136,7 +136,9 @@
         &.position-top {
             margin-top: -10px;
             transform: translateY(-100%);
-
+            &::before,&::after{
+                border-bottom:none;
+            }
             &::before {
                 left: 10px;
                 border-top: 10px solid $border-color;
@@ -152,7 +154,9 @@
 
         &.position-bottom {
             margin-top: 10px;
-
+            &::before,&::after{
+                border-top:none;
+            }
             &::before {
                 border-bottom: 10px solid $border-color;
                 top: 0;
@@ -169,7 +173,9 @@
         &.position-left {
             margin-left: -10px;
             transform: translateX(-100%);
-
+            &::before,&::after{
+                border-right:none;
+            }
             &::before {
                 border-left: 10px solid $border-color;
                 top: 50%;
@@ -187,7 +193,9 @@
 
         &.position-right {
             margin-left: 10px;
-
+            &::before,&::after{
+                border-left:none;
+            }
             &::before {
                 border-right: 10px solid $border-color;
                 top: 50%;
