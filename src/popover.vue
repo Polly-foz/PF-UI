@@ -1,6 +1,7 @@
 <template>
     <div class="popover" @click="onClick" ref="popover">
-        <div class="contentWrapper" v-if="visible" ref="contentWrapper">
+        <div class="contentWrapper" v-if="visible" ref="contentWrapper"
+        :class="position && `position-${position}`">
             <slot name="content"></slot>
         </div>
         <slot></slot>
@@ -16,6 +17,15 @@
                 visible: false
             };
         },
+        props:{
+            position:{
+                type: String,
+                default: 'top',
+                validator(value){
+                    return ['top','left','right','bottom'].indexOf(value)>=0
+                }
+            }
+        },
         methods: {
             onDocumentClick(e){
                 if(this.$refs.popover.contains(e.target)
@@ -28,10 +38,26 @@
             open(){
                 this.visible = true;
                 this.$nextTick(()=>{
-                    const {top,left} = this.$refs.popover.getBoundingClientRect()
-                    document.body.appendChild(this.$refs.contentWrapper)
-                    this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
-                    this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
+                    const position = this.position
+                    const contentWrapper = this.$refs.contentWrapper
+                    const {top,left,height,width} = this.$refs.popover.getBoundingClientRect()
+                    document.body.appendChild(contentWrapper)
+                    if(position==='top'){
+                        contentWrapper.style.top = top + window.scrollY + 'px'
+                        contentWrapper.style.left = left + window.scrollX + 'px'
+                    }else if(position==='bottom'){
+                        contentWrapper.style.top = top + window.scrollY + height + 'px'
+                        contentWrapper.style.left = left + window.scrollX + 'px'
+                    }else if(position==='left'){
+                        const {height:contentHeight} = contentWrapper.getBoundingClientRect()
+                        contentWrapper.style.top = top + window.scrollY + (height - contentHeight)/2 + 'px'
+                        contentWrapper.style.left = left + window.scrollX + 'px'
+                    }else if(position==='right'){
+                        const {height:contentHeight} = contentWrapper.getBoundingClientRect()
+                        contentWrapper.style.top = top + window.scrollY - (contentHeight - height)/2 + 'px'
+                        contentWrapper.style.left = left + window.scrollX + width + 'px'
+                    }
+
                     document.addEventListener('click', this.onDocumentClick);
                 })
             },
@@ -61,12 +87,10 @@
         border:1px solid $border-color;
         border-radius: $border-radius;
         filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
-        transform: translateY(-100%);
         background: white;
         padding: 0.5em 1em;
         max-width: 20em;
         word-break: break-all;
-        margin-top: -10px;
         &::before,&::after{
             content:'';
             display: block;
@@ -74,15 +98,65 @@
             height: 0;
             border: 10px solid transparent;
             position: absolute;
-            left: 10px;
         }
-        &::before{
-            border-top:10px solid $border-color;
-            top: 100%;
+        &.position-top{
+            margin-top: -10px;
+            transform: translateY(-100%);
+            &::before{
+                left: 10px;
+                border-top:10px solid $border-color;
+                top: 100%;
+            }
+            &::after{
+                left: 10px;
+                border-top:10px solid white;
+                top: calc(100% - 1px);
+            }
         }
-        &::after{
-            border-top:10px solid white;
-            top: calc(100% - 1px);
+        &.position-bottom{
+            margin-top: 10px;
+            &::before{
+                border-bottom:10px solid $border-color;
+                top: 0;
+                transform: translateY(-100%);
+            }
+            &::after{
+                border-bottom:10px solid white;
+                top: 0;
+                transform: translateY(calc(-100% + 1px));
+            }
         }
+        &.position-left{
+            margin-left: -10px;
+            transform: translateX(-100%);
+            &::before{
+                border-left:10px solid $border-color;
+                top: 50%;
+                left:100%;
+                transform: translateY(-50%);
+            }
+            &::after{
+                border-left:10px solid white;
+                top: 50%;
+                left: calc(100% - 1px);
+                transform: translateY(-50%);
+            }
+        }
+        &.position-right{
+            margin-left: 10px;
+            &::before{
+                border-right:10px solid $border-color;
+                top: 50%;
+                right:100%;
+                transform: translateY(-50%);
+            }
+            &::after{
+                border-right:10px solid white;
+                top: 50%;
+                right: calc(100% - 1px);
+                transform: translateY(-50%);
+            }
+        }
+
     }
 </style>
