@@ -66,8 +66,16 @@
 <body>
 <div id="app">
     <div class="box">
+        <h3>使用single选项</h3>
+        <pf-collapse :selected.sync="selectedCollapse" single>
+            <pf-collapse-item name="a" title="aa">内容a</pf-collapse-item>
+            <pf-collapse-item name="b" title="bbb">内容bbb</pf-collapse-item>
+            <pf-collapse-item name="c" title="cccc">ccc内容</pf-collapse-item>
+            <pf-collapse-item name="d" title="ddddd">dd</pf-collapse-item>
+        </pf-collapse>
+        <br>
+        <h3>不使用single选项</h3>
         <pf-collapse :selected.sync="selectedCollapse">
-            {{selectedCollapse}}
             <pf-collapse-item name="a" title="aa">内容a</pf-collapse-item>
             <pf-collapse-item name="b" title="bbb">内容bbb</pf-collapse-item>
             <pf-collapse-item name="c" title="cccc">ccc内容</pf-collapse-item>
