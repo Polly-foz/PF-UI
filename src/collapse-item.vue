@@ -1,6 +1,6 @@
 <template>
     <div class="collapseItem">
-        <div class="title" @click="visible=!visible">{{title}}</div>
+        <div class="title" @click="onClick">{{title}}</div>
         <div class="content" v-if="visible">
             <slot></slot>
         </div>
@@ -10,16 +10,45 @@
 <script>
     export default {
         name: "PFCollapseItem",
+        inject: ['eventBus'],
+        props: {
+            title: {
+                type: String,
+                required: true
+            },
+            name: {
+                type: String,
+                required: true
+            }
+        },
         data() {
             return {
                 visible: false
             };
         },
-        props: {
-            title: {
-                type: String,
-                required: true
+        methods:{
+            onClick(){
+                if(this.visible){
+                    this.eventBus.$emit('remove:selected',this.name)
+                }else{
+                    this.eventBus.$emit('add:selected',this.name)
+                }
+            },
+            unfold(){
+                this.visible = true
+            },
+            fold(){
+                this.visible = false
             }
+        },
+        mounted(){
+            this.eventBus.$on('update:selected',(names)=>{
+                if(names.indexOf(this.name)>=0){
+                    this.unfold()
+                }else{
+                    this.fold()
+                }
+            })
         }
     };
 </script>
