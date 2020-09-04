@@ -2,7 +2,7 @@
     <transition name="slide">
         <div class="sider" v-if="show">
             <slot></slot>
-            <button class="close" @click="show=false">x</button>
+            <button v-if="enableClose" class="close" @click="show=false">x</button>
         </div>
     </transition>
 
@@ -13,8 +13,11 @@
         name: "PFSider",
         data() {
             return {
-                show: true
+                show: true,
             };
+        },
+        props:{
+            enableClose: false
         }
     };
 </script>
