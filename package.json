@@ -1,12 +1,13 @@
 {
   "name": "pf-ui-20200812",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a UI framework",
   "main": "dist/index.js",
   "scripts": {
     "dev": "npx parcel index.html --no-cache",
     "dev-test": "parcel watch test/* --no-cache & karma start",
     "test": "parcel build test/* --no-minify && karma start --single-run",
+    "publish": "npm publish",
     "build": "npx parcel build index.js --no-minify",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
