@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :class="toastClass">
+    <div class="pf-toast" :class="toastClass">
         <div class="toast" ref="toast" >
             <div v-if="enableHtml" v-html="$slots.default[0]">
             </div>
@@ -16,7 +16,7 @@
         props: {
             autoClose: {
                 type: [Boolean,Number],
-                default: 5,
+                default: 2,
                 validator(value){
                     return value === false || typeof value === 'number'
                 }
@@ -102,7 +102,7 @@
         0%{opacity: 0;transform: translateY(100%);}
         100%{opacity: 1;transform: translateY(0);}
     }
-    .wrapper{
+    .pf-toast{
         position: fixed;
         left: 50%;
         &.position-top{

@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :class="{error}">
+    <div class="pf-toast" :class="{error}">
         <input type="text" :value="value" :disabled="disabled" :readonly="readonly"
                @change="$emit('change',$event.target.value)"
                @input="$emit('input',$event.target.value)"
@@ -48,7 +48,7 @@
     $font-size: 12px;
     $box-shadow-color: rgba(0, 0, 0, 0.5);
     $red: #F1453D;
-    .wrapper {
+    .pf-toast {
         font-size: $font-size;
         display: inline-flex;
         align-items: center;

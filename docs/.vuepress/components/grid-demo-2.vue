@@ -19,20 +19,26 @@
         <p>
             <strong>代码</strong>
         </p>
-        <pre><code>{{code}}</code></pre>
+        <pf-button v-if="!showCode" @click="showCode=true">显示代码</pf-button>
+        <pf-button v-else @click="showCode=false">隐藏代码</pf-button>
+        <pre v-if="showCode"><code>{{code}}</code></pre>
     </div>
 </template>
 
 <script>
     import Row from '../../../src/row';
     import Col from '../../../src/col';
+    import button from "../../../src/button";
+
     export default {
         components: {
             'pf-row': Row,
-            'pf-col': Col
+            'pf-col': Col,
+            'pf-button': button
         },
-        data(){
+        data() {
             return {
+                showCode: false,
                 code: `
 <pf-row class="demoRow" gutter="20">
     <pf-col span="8">
@@ -46,7 +52,7 @@
     </pf-col>
 </pf-row>
                 `.trim()
-            }
+            };
         }
     };
 </script>
